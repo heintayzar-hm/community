@@ -1,9 +1,5 @@
 const MutualFriendsPage = () => {
-    return (
-        <div>
-        MutualFriendsPage
-        </div>
-    );
-}
+  return <div>MutualFriendsPage</div>;
+};
 
 export default MutualFriendsPage;

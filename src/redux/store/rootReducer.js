@@ -3,7 +3,8 @@ import storage from 'redux-persist/lib/storage';
 // store in redux persist
 import { persistReducer } from 'redux-persist';
 import { whitelist, SLICES } from '../constants';
-import userSlice from '../slices/userSlice';
+import userSlice from '../slices/userSlice/userSlice';
+// import encryptor from '../../services/EncryptionService';
 const persistConfig = {
   // Root
   key: SLICES.ROOT_SLICE.NAME,

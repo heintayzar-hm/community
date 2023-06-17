@@ -1,6 +1,6 @@
 import { Button } from '@material-tailwind/react';
 import { useDispatch } from 'react-redux';
-import { changeModeFunc } from '../../redux/slices/userSlice';
+import { changeModeFunc } from '../../redux/slices/userSlice/userSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();

@@ -18,17 +18,16 @@ import MainLayout from './layouts/MainLayout';
 const RoutesComponent = () => {
   return (
     <>
+      {/* routes should be scaled for large apps so it will be in new file */}
+      <Routes>
+        {/* <Route path="/" element={<Home />} /> */}
+        {routes.map((route, index) => {
+          // Suspense is used for lazy loading
+          let element = <Suspense fallback={route.fallback}> {route.element} </Suspense>;
 
-        {/* routes should be scaled for large apps so it will be in new file */}
-        <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          {routes.map((route, index) => {
-            // Suspense is used for lazy loading
-            let element = <Suspense fallback={route.fallback}> {route.element} </Suspense>;
-
-            return <Route key={index} path={route.path} element={element} />;
-          })}
-        </Routes>
+          return <Route key={index} path={route.path} element={element} />;
+        })}
+      </Routes>
     </>
   );
 };
@@ -41,18 +40,18 @@ const RoutesComponent = () => {
 const App = () => {
   return (
     // use HashRouter instead of BrowserRouter for github pages and other static hosting
-     <HashRouter>
-    <Provider store={store}>
-      {/* for local storage we will use redux-persist */}
-      <PersistGate loading={<Loading />} persistor={persistor}>
-        <div className="App font-secondary tracking-wider text-base ">
-          <MainLayout>
+    <HashRouter>
+      <Provider store={store}>
+        {/* for local storage we will use redux-persist */}
+        <PersistGate loading={<Loading />} persistor={persistor}>
+          <div className="App font-secondary tracking-wider text-base ">
+            <MainLayout>
               <RoutesComponent />
             </MainLayout>
-        </div>
-      </PersistGate>
+          </div>
+        </PersistGate>
       </Provider>
-      </HashRouter>
+    </HashRouter>
   );
 };
 

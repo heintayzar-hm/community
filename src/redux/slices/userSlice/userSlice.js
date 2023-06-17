@@ -1,7 +1,8 @@
 // userSlice.js
 
 import { createSlice } from '@reduxjs/toolkit';
-import { SLICES } from '../constants';
+import { SLICES } from '../../constants';
+import { handleLogin, loginThunk } from './userThunk';
 
 const initialState = SLICES.USER_SLICE.INITIAL_STATE;
 
@@ -18,8 +19,10 @@ const userSlice = createSlice({
   reducers: {
     changeModeFunc: changeMode
   },
-  extraReducers: () => {
+  extraReducers: (builder) => {
     // thunk
+    builder.addCase(loginThunk.fulfilled, handleLogin);
+    builder.addCase(loginThunk.rejected, handleLogin);
   }
 });
 
