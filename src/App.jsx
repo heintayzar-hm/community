@@ -1,7 +1,7 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import { withErrorBoundary } from 'react-error-boundary';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import Error from './components/Error/Error';
@@ -35,24 +35,19 @@ const RoutesComponent = () => {
 
 /**
  * App component is the root component of the app
- * responsible for rendering the routes, theming and other global components(for now redux )
+ * responsible for rendering the routes and other global components(for now redux )
  * @returns {JSX.Element}
  */
 const App = () => {
-  const theme = {
-    // will be used for theming
-  };
   return (
     // use HashRouter instead of BrowserRouter for github pages and other static hosting
      <HashRouter>
     <Provider store={store}>
       {/* for local storage we will use redux-persist */}
       <PersistGate loading={<Loading />} persistor={persistor}>
-        <div className="App font-secondary tracking-wider text-base">
+        <div className="App font-secondary tracking-wider text-base ">
           <MainLayout>
-          <ThemeProvider value={theme}>
               <RoutesComponent />
-            </ThemeProvider>
             </MainLayout>
         </div>
       </PersistGate>

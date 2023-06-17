@@ -19,6 +19,14 @@ export const ROUTES = {
     path: '/setting',
     name: 'Setting',
   },
+  COMMUNITY_FEED: {
+    path: '/community-feed',
+    name: 'Community Feed',
+  },
+  MUTUAL_FRIENDS: {
+    path: '/mutual-friends',
+    name: 'Mutual Friends',
+  },
   AUTH: {
     path: '/auth',
     name: 'Auth',
@@ -38,3 +46,10 @@ export const ROUTES = {
     name: 'Not Found',
   },
 };
+
+
+export const APP = {
+  NAME: 'Community',
+  LOGO_PATH: '/react.svg',
+
+}

@@ -3,13 +3,19 @@
 import { lazy } from 'react';
 import { ROUTES } from '../constants.js';
 import Loading from '../components/Loading/Loading';
-import MainLayout from '../layouts/MainLayout.jsx';
 
+
+// nav bar routes
 const Home = lazy(() => import('../pages/HomePage/HomePage'));
+const MutualFriends = lazy(() => import('../pages/MutualFriendsPage/MutualFriendsPage'));
+const CommunityFeed = lazy(() => import('../pages/CommunityFeedPage/CommunityFeedPage'));
+
+// side bar routes
 const Profile = lazy(() => import('../pages/ProfilePage/ProfilePage'));
 const Settings = lazy(() => import('../pages/SettingPage/SettingPage'));
 // lazy load routes
 export default [
+  // nav bar routes
   {
     path: ROUTES.HOME.path,
     element: (
@@ -17,6 +23,21 @@ export default [
     ),
     fallback: <Loading />
   },
+  {
+    path: ROUTES.MUTUAL_FRIENDS.path,
+    element: (
+      <MutualFriends />
+    ),
+    fallback: <Loading />
+  },
+  {
+    path: ROUTES.COMMUNITY_FEED.path,
+    element: (
+      <CommunityFeed />
+    ),
+    fallback: <Loading />
+  },
+  // side bar routes
   {
     path: ROUTES.PROFILE.path,
     element: (
@@ -30,5 +51,5 @@ export default [
         <Settings />
     ),
     fallback: <Loading />
-  }
+  },
 ];
