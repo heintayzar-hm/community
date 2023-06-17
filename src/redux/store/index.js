@@ -3,16 +3,14 @@ import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 import persistStore from 'redux-persist/es/persistStore';
 
-
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(
-    {
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE']
       }
-    }
-  ).concat(thunk),
+    }).concat(thunk)
 });
 
 const persistor = persistStore(store);
