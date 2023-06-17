@@ -1,5 +1,4 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import { Suspense } from 'react';
 import { withErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
@@ -10,6 +9,7 @@ import { ThemeProvider } from '@material-tailwind/react';
 
 import routes from './pages/routes';
 import Loading from './components/Loading/Loading';
+import MainLayout from './layouts/MainLayout';
 
 /**
  * will be used for adding loading component for lazy loading and suspense, loop over routes and render them
@@ -18,8 +18,7 @@ import Loading from './components/Loading/Loading';
 const RoutesComponent = () => {
   return (
     <>
-      {/* use HashRouter instead of BrowserRouter for github pages and other static hosting */}
-      <HashRouter>
+
         {/* routes should be scaled for large apps so it will be in new file */}
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
@@ -30,7 +29,6 @@ const RoutesComponent = () => {
             return <Route key={index} path={route.path} element={element} />;
           })}
         </Routes>
-      </HashRouter>
     </>
   );
 };
@@ -45,16 +43,21 @@ const App = () => {
     // will be used for theming
   };
   return (
+    // use HashRouter instead of BrowserRouter for github pages and other static hosting
+     <HashRouter>
     <Provider store={store}>
       {/* for local storage we will use redux-persist */}
       <PersistGate loading={<Loading />} persistor={persistor}>
         <div className="App font-secondary tracking-wider text-base">
+          <MainLayout>
           <ThemeProvider value={theme}>
-            <RoutesComponent />
-          </ThemeProvider>
+              <RoutesComponent />
+            </ThemeProvider>
+            </MainLayout>
         </div>
       </PersistGate>
-    </Provider>
+      </Provider>
+      </HashRouter>
   );
 };
 
