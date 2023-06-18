@@ -1,7 +1,6 @@
 import {
   Navbar,
   Collapse,
-  Button,
   IconButton,
   TabsHeader,
   Tab,

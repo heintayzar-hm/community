@@ -11,6 +11,13 @@ export const ROUTES = {
     path: '/contact',
     name: 'Contact'
   },
+  POSTS: {
+    path: '/posts',
+    name: 'Posts',
+    route: {
+      path: '/posts/:id'
+    }
+  },
   PROFILE: {
     path: '/profile',
     name: 'Profile'
@@ -57,7 +64,16 @@ export const API = {
   ENDPOINTS: {
     AUTH: {
       LOGIN: '/auth/login',
-      REGISTER: '/auth/register'
+      REGISTER: '/auth/register',
+      LOGOUT: '/auth/logout'
+    },
+    POSTS: {
+      NEWSFEED: '/posts/newsfeed?page=:id',
+      LIKE: '/posts/react',
+      POST: '/posts/qa/:id',
+      GET_COMMENTS: '/posts/comments?content_id=:id',
+      COMMENT: '/posts/comments'
     }
-  }
+  },
+  IMAGE_URL: 'https://htv2prod.blob.core.windows.net/htwettoe/'
 };

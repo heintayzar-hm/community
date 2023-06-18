@@ -3,7 +3,7 @@ import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from '@material-tailwind/re
 import { Square3Stack3DIcon, UserCircleIcon, Cog6ToothIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
-export default ({ children }) => {
+export default () => {
   const data = [
     {
       label: 'NewsFeed',

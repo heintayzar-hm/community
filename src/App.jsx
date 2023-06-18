@@ -1,11 +1,10 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import { withErrorBoundary } from 'react-error-boundary';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import Error from './components/Error/Error';
-import { ThemeProvider } from '@material-tailwind/react';
 
 import routes from './pages/routes';
 import Loading from './components/Loading/Loading';
@@ -22,9 +21,14 @@ const RoutesComponent = () => {
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
         {routes.map((route, index) => {
+          // layout
+          let Layout = route.layout || MainLayout;
           // Suspense is used for lazy loading
-          let element = <Suspense fallback={route.fallback}> {route.element} </Suspense>;
-
+          let element = (
+            <Layout>
+              <Suspense fallback={route.fallback}> {route.element} </Suspense>
+            </Layout>
+          );
           return <Route key={index} path={route.path} element={element} />;
         })}
       </Routes>
@@ -45,9 +49,7 @@ const App = () => {
         {/* for local storage we will use redux-persist */}
         <PersistGate loading={<Loading />} persistor={persistor}>
           <div className="App font-secondary tracking-wider text-base ">
-            <MainLayout>
-              <RoutesComponent />
-            </MainLayout>
+            <RoutesComponent />
           </div>
         </PersistGate>
       </Provider>

@@ -3,7 +3,7 @@
 import { lazy } from 'react';
 import { ROUTES } from '../constants.js';
 import Loading from '../components/Loading/Loading';
-
+import SingularLayout from '../layouts/SinguarLayout.jsx';
 // nav bar routes
 const Home = lazy(() => import('../pages/HomePage/HomePage'));
 const MutualFriends = lazy(() => import('../pages/MutualFriendsPage/MutualFriendsPage'));
@@ -12,6 +12,9 @@ const CommunityFeed = lazy(() => import('../pages/CommunityFeedPage/CommunityFee
 // side bar routes
 const Profile = lazy(() => import('../pages/ProfilePage/ProfilePage'));
 const Settings = lazy(() => import('../pages/SettingPage/SettingPage'));
+
+// post
+const Post = lazy(() => import('../pages/PostPage/PostPage'));
 // lazy load routes
 export default [
   // nav bar routes
@@ -19,6 +22,12 @@ export default [
     path: ROUTES.HOME.path,
     element: <Home />,
     fallback: <Loading />
+  },
+  {
+    path: ROUTES.POSTS.route.path,
+    element: <Post />,
+    fallback: <Loading />,
+    layout: SingularLayout
   },
   {
     path: ROUTES.MUTUAL_FRIENDS.path,

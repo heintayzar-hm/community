@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes hideToTop {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+      height: 0;
+    }
+  }
+
+  .cancel-animation {
+    animation: hideToTop 0.5s forwards;
+  }
+
+    .show-animation {
+        animation: hideToTop 0.5s reverse forwards;
+    }
