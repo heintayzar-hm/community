@@ -56,7 +56,8 @@ export const ROUTES = {
 
 export const APP = {
   NAME: 'Community',
-  LOGO_PATH: 'react'
+  LOGO_PATH: 'react',
+  SECRET_KEY: import.meta.env.VITE_SECRET_KEY || 'secret-key',
 };
 
 export const API = {
