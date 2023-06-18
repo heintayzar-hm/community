@@ -17,7 +17,6 @@ const Comments = ({ id, showCommentBox, handleCommentBox }) => {
   // needs token
   const token = useSelector((state) => state.user.data.token);
   const [comments, setComments] = useState([]);
-  console.log(comments);
   // for profile image url
   const getComments = async () => {
     await getPostComments(id, token).then((res) => {

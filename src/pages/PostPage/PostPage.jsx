@@ -9,7 +9,6 @@ const PostPage = () => {
   const post = useSelector((state) => state.postState.post);
   const token = useSelector((state) => state.user.data.token);
   const dispatch = useDispatch();
-  console.log(post);
   useEffect(() => {
     dispatch(getPost({ postId: id, token }));
   }, []);

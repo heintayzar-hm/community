@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 import NavBar from '../components/Navbar/NavBar';
 import SideBar from '../components/Sidebar/SideBar';
 import { ThemeProvider } from '@material-tailwind/react';
-
+import ScrollToTop from "react-scroll-to-top";
+import {ArrowLongUpIcon} from '@heroicons/react/24/outline'
 const MainLayout = ({ children }) => {
   const darkMode = useSelector((state) => state.user.darkMode);
   let theme = {
@@ -32,6 +33,11 @@ const MainLayout = ({ children }) => {
           <main className="md:px-12 px-3 py-4 dark:bg-dark-900 min-h-screen">{children}</main>
         </div>
       </div>
+      <ScrollToTop smooth
+        className=' bg-primary rounded-full cursor-pointer'
+        component={<ArrowLongUpIcon className='w-6 h-6 text-white mx-auto' />}
+      />
+
     </ThemeProvider>
   );
 };

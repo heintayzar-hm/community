@@ -2,6 +2,8 @@ import { Button, ThemeProvider } from '@material-tailwind/react';
 import { useSelector } from 'react-redux';
 import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
 import { useNavigate } from 'react-router-dom';
+import ScrollToTop from "react-scroll-to-top";
+import {ArrowLongUpIcon} from '@heroicons/react/24/outline'
 
 const SingularLayout = ({ children }) => {
   const darkMode = useSelector((state) => state.user.darkMode);
@@ -36,6 +38,10 @@ const SingularLayout = ({ children }) => {
           <main className="md:px-12 px-3 py-4 dark:bg-dark-900 min-h-screen">{children}</main>
         </div>
       </div>
+      <ScrollToTop smooth
+        className=' bg-primary rounded-full cursor-pointer'
+        component={<ArrowLongUpIcon className='w-6 h-6 text-white mx-auto' />}
+      />
     </ThemeProvider>
   );
 };
