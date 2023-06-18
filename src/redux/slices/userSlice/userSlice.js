@@ -13,11 +13,19 @@ const changeMode = (state) => {
   };
 };
 
+const logout = (state) => {
+  return {
+    ...initialState,
+    darkMode: state.darkMode
+  }
+}
+
 const userSlice = createSlice({
   name: SLICES.USER_SLICE.NAME,
   initialState,
   reducers: {
-    changeModeFunc: changeMode
+    changeModeFunc: changeMode,
+    logoutFunc: logout
   },
   extraReducers: (builder) => {
     // thunk
@@ -27,6 +35,6 @@ const userSlice = createSlice({
 });
 
 // if needed to export actions
-export const { changeModeFunc } = userSlice.actions;
+export const { changeModeFunc, logoutFunc } = userSlice.actions;
 
 export default userSlice.reducer;

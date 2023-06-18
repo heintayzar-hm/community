@@ -4,6 +4,8 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { APP, ROUTES } from '../../constants';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import SignIn from '../../pages/Auth/SignIn/SignIn';
+import Logout from '../Logout/Logout';
 
 const data = [
   {
@@ -67,6 +69,8 @@ export default () => {
 
         <hr className="my-2 border-blue-gray-50" />
         {/* Other Links */}
+        <SignIn />
+        <Logout />
       </List>
     </Card>
   );
